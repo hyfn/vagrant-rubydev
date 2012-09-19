@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+# cookbook 'chef-client'
+
+cookbook 'ruby_build',        :git => 'git://github.com/fnichol/chef-ruby_build.git', :ref => 'v0.6.2'                                                                                                 
+cookbook 'rbenv',             :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.4'
+cookbook 'apt',               :git => 'https://github.com/fnichol/chef-apt'
+cookbook 'build-essential'
+cookbook 'postgresql'
+cookbook 'mysql'
+cookbook 'redis'
+cookbook 'memcached'
+cookbook 'imagemagick'
