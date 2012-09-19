@@ -43,15 +43,18 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks","cookbooks-src"] 
     
-    recipes = %w{ apt ruby_build rbenv::user rbenv::vagrant build-essential 
-      postgresql mysql postgresql redis memcached imagemagick }
+    recipes = %w{ ruby_build rbenv apt build-essential mysql postgresql 
+      nodejs rbenv::system rbenv::vagrant nodejs::npm }
+      
+    # add: redis memcached imagemagick
+    # user rbenv and gems
     
     recipes.map { |recipe| chef.add_recipe(recipe) }
     
     ruby_version = '1.9.3-p194'
     
     gems = %w{ vagrant bundler capistrano rails pry sass compass therubyracer 
-      awesome_print sinatra mysql2 sqlite pg redis dalli }
+      awesome_print sinatra mysql2 sqlite pg dalli }
     
     # TODO: config for all the other stuff
     chef.json = { 
@@ -60,9 +63,9 @@ Vagrant::Config.run do |config|
       },
       :rbenv => {
         :rubies => [ruby_version],
-        :gems => {
-          ruby_version => gems.map { |gem| { :name => gem } }
-        },
+        # :gems => {
+        #   ruby_version => gems.map { |gem| { :name => gem } }
+        # },
       },
     }
   end

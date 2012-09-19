@@ -1,6 +1,3 @@
-#!/usr/bin/env ruby
-#^syntax detection
-
 site 'http://community.opscode.com/api/v1'
 
 # cookbook 'chef-client'
@@ -9,8 +6,11 @@ cookbook 'ruby_build',        :git => 'git://github.com/fnichol/chef-ruby_build.
 cookbook 'rbenv',             :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.4'
 cookbook 'apt',               :git => 'https://github.com/fnichol/chef-apt'
 cookbook 'build-essential'
+cookbook 'sqlite'
 cookbook 'postgresql'
 cookbook 'mysql'
-cookbook 'redis'
+cookbook 'redis',             :git => 'git://github.com/ctrabold/chef-redis.git'
 cookbook 'memcached'
 cookbook 'imagemagick'
+cookbook 'nodejs'
+
