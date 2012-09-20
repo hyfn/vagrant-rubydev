@@ -34,7 +34,7 @@ Vagrant::Config.run do |config|
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  config.vm.share_folder "sites", "/sites", "~/Sites/vagrant-shared-test"
+  # config.vm.share_folder "sites", "/sites", "~/Sites/vagrant-shared-test"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding 
@@ -43,47 +43,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks","cookbooks-src"] 
     
-    # recipes = %w{ ruby_build rbenv apt build-essential mysql::client mysql::server postgresql 
-    #   nodejs rbenv::user rbenv::vagrant nodejs::npm }
-      
-    # add: redis memcached imagemagick
-    # user rbenv and gems
+    chef.add_recipe("hyfn-vagrant-rubydev")
     
-    # list of chef recipes
-    recipes = %w{
-      hyfn-vagrant-rubydev
-    }
-    
-    # run all the recipes
-    recipes.map { |recipe| chef.add_recipe(recipe) }
-    
-    ruby_version = '1.9.3-p194'
-    
-    # GEMS - eventually
-    # bundler capistrano rails pry sass compass therubyracer 
-    # awesome_print sinatra mysql2 sqlite pg dalli
-    
-    # configuration for recipes
-    chef.json = { 
-      :mysql => {
-        :server_root_password => "",
-      },
-      :rbenv => {
-        :user_installs => [{
-          :user => 'vagrant',
-          :rubies => [ruby_version],
-          :global => ruby_version,
-          :gems => {
-            ruby_version => [
-              {:name => "bundler"},
-              {:name => "capistrano"},
-              {:name => "pry"},
-              {:name => "sass"},
-              {:name => "compass"},
-            ],
-          },
-        }],
-      },
-    }
   end
 end
