@@ -27,5 +27,5 @@ A virtual environment for developing ruby apps.
 
 1. Grab latest version of vagrant-rubydev: `git clone git@github.com:hyfn/vagrant-rubydev.git`
 - Navigate into the vagrant-rubydev directory: `cd vagrant-rubydev`
-- Create the virtual machine: `vagrant up`. This will take a really long time.
 - 
+- Create the virtual machine: `vagrant up`. This will take a really long time.

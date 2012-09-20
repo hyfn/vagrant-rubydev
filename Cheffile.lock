@@ -24,13 +24,6 @@ SITE
     yum (0.8.2)
 
 GIT
-  remote: git://github.com/ctrabold/chef-redis.git
-  ref: master
-  sha: a5686a513d5912a51a4f4cb40f708a4a31cd1707
-  specs:
-    redis (0.0.4)
-
-GIT
   remote: git://github.com/fnichol/chef-ruby_build.git
   ref: v0.6.2
   sha: 2e45dc11b4f98175cc1f70ad254e22aab213cfb4
@@ -61,7 +54,6 @@ DEPENDENCIES
   nodejs (>= 0)
   postgresql (>= 0)
   rbenv (>= 0)
-  redis (>= 0)
   ruby_build (>= 0)
   sqlite (>= 0)
 
